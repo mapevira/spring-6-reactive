@@ -28,9 +28,7 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         loadBeerData();
 
-        beerRepository.count().subscribe(count -> {
-            log.info("Count is: {}", count);
-        });
+        beerRepository.count().subscribe(count -> log.info("Count is: {}", count));
     }
 
     private void loadBeerData() {
