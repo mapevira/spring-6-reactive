@@ -22,4 +22,5 @@ public class BeerController {
         return Flux.just(BeerDTO.builder().id(1).build(),
                 BeerDTO.builder().id(2).build());
     }
+
  }
