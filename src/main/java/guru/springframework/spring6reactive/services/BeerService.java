@@ -1,0 +1,17 @@
+package guru.springframework.spring6reactive.services;
+
+import guru.springframework.spring6reactive.model.BeerDTO;
+import reactor.core.publisher.Flux;
+
+/**
+ * Created by jt, Spring Framework Guru.
+ *
+ * @author architecture - raulp
+ * @version 20/08/2024 - 18:22
+ * @since jdk 1.21
+ */
+public interface BeerService {
+
+    Flux<BeerDTO> listBeers();
+
+}
