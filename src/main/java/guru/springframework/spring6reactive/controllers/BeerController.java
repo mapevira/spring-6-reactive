@@ -5,10 +5,7 @@ import guru.springframework.spring6reactive.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,8 +27,8 @@ public class BeerController {
 
     private final BeerService beerService;
 
-    @PostMapping(BEER_PATH_ID)
-    Mono<ResponseEntity<Void>> createNewBeer(final BeerDTO beerDTO) {
+    @PostMapping(BEER_PATH)
+    Mono<ResponseEntity<Void>> createNewBeer(@RequestBody final BeerDTO beerDTO) {
         return beerService.saveNewBeer(beerDTO)
                 .map(saveDto -> ResponseEntity.created(UriComponentsBuilder
                         .fromHttpUrl("http://localhost:8080/" + BEER_PATH
