@@ -28,6 +28,15 @@ public class BeerController {
 
     private final BeerService beerService;
 
+    @PatchMapping(BEER_PATH_ID)
+    ResponseEntity<Void> patchExistingBeer(@PathVariable("beerId") final Integer beerId,
+                                            @RequestBody final BeerDTO beerDTO) {
+
+        beerService.patchBeer(beerId, beerDTO).subscribe();
+
+        return ResponseEntity.ok().build();
+    }
+
     @PutMapping(BEER_PATH_ID)
     ResponseEntity<Void> updateExistingBeer(@PathVariable("beerId") final Integer beerId,
                                                   @RequestBody final BeerDTO beerDTO) {
