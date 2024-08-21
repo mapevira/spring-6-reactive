@@ -1,5 +1,6 @@
 package guru.springframework.spring6reactive.controllers;
 
+import guru.springframework.spring6reactive.domain.Beer;
 import guru.springframework.spring6reactive.model.BeerDTO;
 import guru.springframework.spring6reactive.services.BeerService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,15 @@ public class BeerController {
     public static final String BEER_PATH_ID = BEER_PATH + "/{beerId}";
 
     private final BeerService beerService;
+
+    @PutMapping(BEER_PATH_ID)
+    ResponseEntity<Void> updateExistingBeer(@PathVariable("beerId") final Integer beerId,
+                                                  @RequestBody final BeerDTO beerDTO) {
+
+        beerService.updateBeer(beerId, beerDTO).subscribe();
+
+        return ResponseEntity.ok().build();
+    }
 
     @PostMapping(BEER_PATH)
     Mono<ResponseEntity<Void>> createNewBeer(@RequestBody final BeerDTO beerDTO) {
