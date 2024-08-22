@@ -44,7 +44,7 @@ public class BeerController {
 
         beerService.patchBeer(beerId, beerDTO).subscribe();
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping(BEER_PATH_ID)

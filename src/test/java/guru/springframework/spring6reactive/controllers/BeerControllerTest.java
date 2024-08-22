@@ -19,8 +19,17 @@ class BeerControllerTest {
     WebTestClient webTestClient;
 
     @Test
+    void testDeleteBeer() {
+        webTestClient.delete()
+                .uri(BeerController.BEER_PATH_ID, 1)
+                .exchange()
+                .expectStatus().isNoContent();
+    }
+
+    @Test
     void testUpdateBeer() {
-        webTestClient.put().uri(BeerController.BEER_PATH_ID, 1)
+        webTestClient.put()
+                .uri(BeerController.BEER_PATH_ID, 1)
                 .body(Mono.just(BeerRepositoryTest.getTestBeer()), BeerDTO.class)
                 .exchange()
                 .expectStatus().isNoContent();
@@ -28,7 +37,8 @@ class BeerControllerTest {
 
     @Test
     void testCreateBeer() {
-        webTestClient.post().uri(BeerController.BEER_PATH)
+        webTestClient.post()
+                .uri(BeerController.BEER_PATH)
                 .body(Mono.just(BeerRepositoryTest.getTestBeer()), BeerDTO.class)
                 .header("Content-Type", "application/json")
                 .exchange()
@@ -38,7 +48,8 @@ class BeerControllerTest {
 
     @Test
     void testGetById() {
-        webTestClient.get().uri(BeerController.BEER_PATH_ID, 1)
+        webTestClient.get()
+                .uri(BeerController.BEER_PATH_ID, 1)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().valueEquals("Content-Type", "application/json")
@@ -47,7 +58,8 @@ class BeerControllerTest {
 
     @Test
     void testListBeers() {
-        webTestClient.get().uri(BeerController.BEER_PATH)
+        webTestClient.get()
+                .uri(BeerController.BEER_PATH)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().valueEquals("Content-Type", "application/json")
