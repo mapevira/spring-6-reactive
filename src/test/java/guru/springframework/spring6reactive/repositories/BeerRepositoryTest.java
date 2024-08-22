@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataR2dbcTest
 @Import(DatabaseConfig.class)
 @Slf4j
-class BeerRepositoryTest {
+public class BeerRepositoryTest {
 
     @Autowired
     BeerRepository beerRepository;
@@ -35,7 +35,7 @@ class BeerRepositoryTest {
                 .subscribe(beer -> System.out.println(beer.toString()));
     }
 
-    Beer getTestBeer() {
+    public static Beer getTestBeer() {
         return Beer.builder()
                 .beerName("Space Dust")
                 .beerStyle("IPA")
