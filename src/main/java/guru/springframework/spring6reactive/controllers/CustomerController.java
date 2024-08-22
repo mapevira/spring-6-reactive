@@ -45,7 +45,7 @@ public class CustomerController {
 
         customerService.patchCustomer(customerId, customerDTO).subscribe();
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping(CUSTOMER_PATH_ID)
@@ -54,7 +54,7 @@ public class CustomerController {
 
         customerService.updateCustomer(customerId, customerDTO).subscribe();
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping(CUSTOMER_PATH)

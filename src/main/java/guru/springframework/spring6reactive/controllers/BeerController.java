@@ -1,8 +1,6 @@
 package guru.springframework.spring6reactive.controllers;
 
-import guru.springframework.spring6reactive.domain.Beer;
 import guru.springframework.spring6reactive.model.BeerDTO;
-import guru.springframework.spring6reactive.repositories.BeerRepository;
 import guru.springframework.spring6reactive.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +27,6 @@ public class BeerController {
     public static final String BEER_PATH_ID = BEER_PATH + "/{beerId}";
 
     private final BeerService beerService;
-    private final BeerRepository beerRepository;
 
     @DeleteMapping(BEER_PATH_ID)
     Mono<ResponseEntity<Void>> deleteById(@PathVariable final Integer beerId) {
